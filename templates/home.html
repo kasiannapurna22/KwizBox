@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+{%  load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KwizBox</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+   
+</head>
+
+<body>
+  <header class="shadow-sm">
+    <div class="max-w-screen-xl p-4 mx-auto">
+      <div class="flex items-center justify-between space-x-4 lg:space-x-10">
+        <div class="flex lg:w-0 lg:flex-1">
+          <span class="w-20 h-10 text-3xl font-black leading-none text-gray-900 select-none">KwizBox<span
+            class="text-yellow-400">.</span></span>
+        </div>
+  
+        <nav class="hidden space-x-8 text-lg font-medium md:flex">
+          <a class="text-gray-500" href="">Home</a>
+          <a class="text-gray-500" href="">About</a>
+          <a class="text-gray-500" href="">Contact</a>
+          <a class="text-gray-500" href="adminpanel/">Admin</a>
+        </nav>
+        <div class="items-center justify-end flex-1 hidden space-x-4 sm:flex">
+          <button onClick="connectWallet();"
+          class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-yellow-500 border border-transparent rounded-md shadow-sm hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400"
+          id="connect-wallet"><b>Login With Metamask🦊</b></button>
+        </div>
+  
+  </header>
+  <section class="px-2 py-32 bg-white md:px-0">
+    <div class="container items-center max-w-6xl px-8 mx-auto xl:px-5">
+        <div class="flex flex-wrap items-center sm:-mx-3">
+            <div class="w-full md:w-1/2 md:px-3">
+                <div
+                    class="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
+                    <h1
+                        class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl">
+                        <span class="block lg:inline">Attempt your assignments
+                        </span>
+                        <span class="block text-yellow-400 lg:inline">through KwizBox Quizzes</span>
+                    </h1>
+                    <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">And avail a super cool NFT!</p>
+                    <div class="relative flex flex-col sm:flex-row sm:space-x-4">
+                        <a href="#_"
+                            class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-yellow-500 rounded-md sm:mb-0 hover:bg-yellow-400 sm:w-auto">
+                            Get Started
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <div class="w-full h-auto overflow-hidden rounded-md shadow-xl sm:rounded-xl">
+                    <img src="{% static 'kwizbox-logo.jpg' %}">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <section class="vh-100">
+
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+
+
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+      
+
+
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                  <section id="profile">
+                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 create_profile">Create Profile</p>
+                    <form method="post" action="{% url 'home' %}" enctype='multipart/form-data'
+                      class="mx-1 mx-md-4">
+                      {% csrf_token %}
+
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                        <input type="text" name="WalletAddress" value="Please Connect with wallet" id="WalletAddress" class="form-control input_text" readonly required>
+                        </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                            <input type="text" name="name" id="username" class="form-control input_text" placeholder="Rollnumber" required>
+                        </div>
+                      </div>
+
+                      <input type="text" id="wallet-address" name="wallet-address" class="form-control input_text"
+                        placeholder="Wallet" hidden>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <div class="form-outline flex-fill mb-0">
+                          <input type="text" name="twitterHandle" id="twitterHandle" class="form-control input_text" placeholder="Name" />
+                          </div>
+                        </div>
+
+                      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                        <button type="submit" class="btn btn-warning btn-lg submitbutton" id="btn-submit">Get started</button>
+                      </div>
+                    </form>
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                  <div class="container">
+                  <img
+                        src="{% static 'kwizbox-banner.png' %}"
+                        alt="Sample image" class="form_image">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              </section>
+              </div>
+              
+  </section>
+</div>
+
+
+
+
+
+</body>
+
+
+    <script>
+
+    async function connectWallet() {
+
+        if (window.ethereum) {
+            console.log(window.ethereum);
+            const provider_t = new ethers.providers.Web3Provider(window.ethereum);
+            const signer_t = provider_t.getSigner();
+            const allWalletAccounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            console.log(allWalletAccounts);
+            document.getElementById('WalletAddress').value = allWalletAccounts[0];
+            document.getElementById('WalletAddress-si').value = allWalletAccounts[0];
+            document.getElementById('admin-address').value = allWalletAccounts[0];
+
+            document.getElementById('connect-wallet').hidden = true;
+        }
+    }
+
+    function changeSignIn()
+    {
+        document.getElementById('sign-in-button').className="btn btn-light";
+        document.getElementById('signup-button').className="btn btn-secondary";
+        document.getElementById('sinUPDIV').hidden=true;
+        document.getElementById('sinInDIV').hidden=false;
+
+    }
+    function changeSignUp()
+    {
+      document.getElementById('sign-in-button').className="btn btn-secondary";
+      document.getElementById('signup-button').className="btn btn-light";
+      document.getElementById('sinUPDIV').hidden=false;
+      document.getElementById('sinInDIV').hidden=true;
+
+    }
+    </script>
+</html>
+
+
+
+
+

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">	
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c8ee3dd930.js"></script>
+    <title>KwizBox</title>
+    <style>
+        body{
+			background: rgb(255,255,255);
+		}
+		.card{
+			box-shadow: 0 0 15px rgba(0,0,0,0.07);
+			margin: 1rem 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+			border-radius: 1rem;
+		}
+        h1 {
+            font-size: 34px;
+            padding-left:35px;
+            font-weight: bold;
+            font-family: 'Open Sans', sans-serif;
+
+            margin-bottom: 0;
+        }
+        h2 {
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            font-weight: 300;
+        }
+		.page-header{
+			display: flex;
+			align-items: center;
+		}
+		.developer6669{
+			display: flex;
+			padding: 1rem 2rem;		
+		}
+		a.developer6669{	
+			text-decoration: none;
+		}		
+		.developer6669:hover{
+			opacity: 0.7;					
+		}		
+		.developer6669 .img-container{
+			padding: 0.3rem;
+			border-radius: 50%;
+			background-color: #dbe4df;
+			margin: 0.5rem;
+		}		
+		.developer6669 .img-container img{
+			height: 6rem;
+			width: 6rem;
+			border-radius: 50%;
+		}
+		.developer6669 .text{
+			display: flex;
+    		align-items: center;
+		}
+		.developer6669 .title{
+			color: #333;
+		}
+		.developer6669 .sub-title{
+			line-height: 0.2;
+			color: #b1b1b1;
+		}
+		.section-status{
+			background-color: #fff;
+		}
+		.section-status .img-container{
+			text-align: center;
+			padding: 1rem 0;
+		}
+		.section-status .img-container img{
+			height: 10rem;
+		}			
+		.section-status .text{
+			text-align: center;
+		}
+		.section-status .text .title{
+			font-size: 2rem;
+		}
+		.section-status .text .sub-title{
+			font-size: 1.3rem;
+		}
+		.section-status .mey-text-color-gray{
+			color: #878787;
+		}
+		.section-status .footer{
+			text-align: center;
+			padding: 2rem 0;
+		}
+		.mey-btn{
+			border:none;
+		}
+		.mey-btn-md{
+			padding: 1rem 1.8rem;
+			border-radius: 3rem;
+		}
+        .cards-list {
+        z-index: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        }
+
+        .card-game {
+        margin: 30px auto;
+        width: 300px;
+        height: 300px;
+        border-radius: 40px;
+        box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+        cursor: pointer;
+        transition: 0.4s;
+        }
+
+        .card-game .card_image {
+        width: inherit;
+        height: inherit;
+        border-radius: 40px;
+        }
+
+        .card-game .card_image img {
+        width: inherit;
+        height: inherit;
+        border-radius: 40px;
+        object-fit: cover;
+        }
+
+        .card-game .card_title {
+        text-align: center;
+        border-radius: 0px 0px 40px 40px;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: -80px;
+        height: 40px;
+        }
+
+        .card-game:hover {
+        transform: scale(0.9, 0.9);
+        box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+            -5px -5px 30px 15px rgba(0,0,0,0.22);
+        }
+        .title{
+            font-family: sans-serif;
+            font-size: 20px;
+
+        }
+        .title-white {
+        color: white;
+        }
+
+        .title-black {
+        color: black;
+        }
+
+        @media all and (max-width: 500px) {
+        .card-list {
+            /* On small screens, we are no longer using row direction but column */
+            flex-direction: column;
+        }
+        }
+
+    </style>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+</head>
+        <body>  
+       
+          
+            <section class="bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 mb-4 mb-sm-5">
+                            <div class="card card-style1 border-0">
+                                <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-6 mb-4 mb-lg-0">
+                                            <img src="{% static 'userlogo.png' %}" alt="userlogo">
+                                        </div>
+                                        <div class="col-lg-6 px-xl-10">
+                                                <h3 class="h2 text-black mb-0"><b>{{user.userName}}</b></h3>
+                                            <ul class="list-unstyled mb-1-9">
+                                                <li class="mb-2 mb-xl-3 display-28" style="padding-top:30px"><span class="display-26 text-secondary me-2 font-weight-600">Wallet Address:</span> {{user.walletAddress}}</li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Name: {{user.twitterHandle}}</span> </li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">NFTs Owned: </span> {{noOfNfts}}</li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">User Status:</span> {{user.isKycVerified}}</li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+
+
+    <div class="container">				
+        <h1>Progress...</h1>
+        <br>
+            <div class="container">				
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-4">				
+                        <div class="section-status card">
+                            <div class="img-container">
+                                <img src="{% static 'week-logo.png' %}"  alt="">
+                            </div>
+                            <div class="text">
+                                <p class="title">
+                                    Quiz-1
+                                </p>
+                                <small class="sub-title mey-text-color-gray">
+                                </small>
+                            </div>
+                            {% if coursesDoneByUser.isWeek1Completed %}
+
+                            <div class="footer">
+                                <a href="" class="btn btn-success mey-btn mey-btn-md">
+                                    Completed
+                                </a>
+                            </div>
+                            {% else %}
+                            <div class="footer">
+                                <a href="/userpage/{{walletAddress}}/quiz/1" class="btn btn-primary mey-btn mey-btn-md">
+                                    Go
+                                </a>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-4">				
+                        <div class="section-status card">
+                            <div class="img-container">
+                                <img src="{% static 'week-logo.png' %}" alt="">
+                            </div>
+                            <div class="text">
+                                <p class="title">
+                                    Quiz-2
+                                </p>
+                                <small class="sub-title mey-text-color-gray">
+                                </small>
+                            </div>
+                            {% if coursesDoneByUser.isWeek2Completed %}
+
+                            <div class="footer">
+                                <a href="" class="btn btn-success mey-btn mey-btn-md">
+                                    Completed
+                                </a>
+                            </div>
+                            {% else %}
+                            <div class="footer">
+                                <a href="/userpage/{{walletAddress}}/quiz/2" class="btn btn-primary mey-btn mey-btn-md">
+                                    Go
+                                </a>
+                            </div>
+                            {% endif %}
+
+                        </div>				
+                    </div>	
+                    <div class="col-xs-12 col-sm-8 col-md-4">				
+                        <div class="section-status card">
+                            <div class="img-container">
+                                <img src="{% static 'week-logo.png' %}"  alt="">
+                            </div>
+                            <div class="text">
+                                <p class="title">
+                                    Quiz-3
+                                </p>
+                                <small class="sub-title mey-text-color-gray">
+                                </small>
+                            </div>
+                            {% if coursesDoneByUser.isWeek3Completed %}
+
+                            <div class="footer">
+                                <a href="" class="btn btn-success mey-btn mey-btn-md">
+                                    Completed
+                                </a>
+                            </div>
+                            {% else %}
+                            <div class="footer">
+                                <a href="/userpage/{{walletAddress}}/quiz/3" class="btn btn-primary mey-btn mey-btn-md">
+                                    Go
+                                </a>
+                            </div>
+                            {% endif %}
+
+                        </div>				
+                    </div>				
+                    </div>						
+                </div>
+            </div>
+        </div>
+    </div>
+<br><br>
+<div class="container">
+    <h1>Availed NFTs:</h1>
+
+
+    <br><br>
+    <div class="cards-list">
+  
+        <div class="card-game">
+          <div class="card_image"> <img src="https://www.giantbomb.com/a/uploads/scale_small/38/388755/3038862-poster%20square.png" /> </div>
+          <div class="card_title title-white">
+          </div>
+        </div>
+        
+    
+    <br><br>
+    <br><br>
+
+
+    <footer>
+        <ul>
+        </ul>
+    </footer>
+        
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>	
+</body>
+</html>

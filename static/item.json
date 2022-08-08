@@ -1,0 +1,19 @@
+{
+    "image": "ipfs://QmSV9G1cUGYRAKk2KxrNB7yqtUDYf7ti9hkubfwKQs793v",
+    "tokenId": 1,
+    "name": "Kwizbox",
+    "attributes": [
+		{
+            "trait_type": "Subject",
+            "value": "Blockchain"
+        },
+        {
+            "trait_type": "Level",
+            "value": "1"
+        },
+        {
+            "trait_type": "status",
+            "value": "pass"
+        }
+    ]
+}

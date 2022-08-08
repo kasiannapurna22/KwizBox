@@ -1,0 +1,56 @@
+
+<div class="min-h-screen flex items-center">
+    <div class="w-full">
+      <h2 class="text-center font-bold text-xl uppercase mb-10">Add Question</h2>
+      <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
+        <form action="{% url 'addQuestion' %}" method="POST">
+          {% csrf_token %}
+          <div class="mb-5">
+            <label for="name" class="block mb-2 font-bold text-gray-600">Week</label>
+            <input type="text" name="weekno" placeholder="week no"
+              class="border border-gray-300 shadow p-3 w-full rounded mb-" required>
+          </div>
+
+          <div class="mb-5">
+            <label for="name" class="block mb-2 font-bold text-gray-600">Question</label>
+            <input type="text" name="question" placeholder="question"
+              class="border border-gray-300 shadow p-3 w-full rounded mb-" required>
+          </div>
+
+          <div class="mb-5">
+            <label for="name" class="block mb-2 font-bold text-gray-600">Option-1</label>
+            <input type="text" name="option1" placeholder="option1"
+              class="border border-gray-300 shadow p-3 w-full rounded mb-" required>
+          </div>
+
+          <div class="mb-5">
+            <label for="name" class="block mb-2 font-bold text-gray-600">Option-2</label>
+            <input type="text" name="option1" placeholder="option1"
+              class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
+
+          <div class="mb-5">
+            <label for="name" class="block mb-2 font-bold text-gray-600">Option-3</label>
+            <input type="text" name="option1" placeholder="option1"
+              class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
+
+          <div class="mb-5">
+            <label for="name" class="block mb-2 font-bold text-gray-600">Option-4</label>
+            <input type="text" name="description" placeholder="description"
+              class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
+
+
+          <div class="mb-5">
+            <label for="name" class="block mb-2 font-bold text-gray-600">Answer</label>
+            <input type="text" name="answer" placeholder="answer: option1,........"
+              class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
+
+          <button type="submit" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Add Question</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
